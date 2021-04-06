@@ -1,0 +1,10 @@
+<h2>Messages</h4>
+<a href="/new" class="btn btn-primary btn-block mb-2">Add New Message</a>
+<ul class = 'list-group'>
+  {{#each messages}}
+    <li class = 'list-group-item'>
+      {{this.text}} <br> <strong>{{this.user}}</strong> <br> {{this.added}}
+    </li>
+  {{/each}}
+</ul>
+

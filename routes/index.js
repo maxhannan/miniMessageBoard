@@ -15,7 +15,7 @@ const messages = [
 ];
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', (req, res) => {
   res.render('index', { messages: messages});
 });
 
@@ -24,12 +24,14 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/new', (req, res) => {
-  const newMessage = {
-    text: req.body.message,
-    user: req.body.name,
-    added: new Date().toLocaleTimeString()
+  if(req.body.message && req.body.name){
+    const newMessage = {
+      text: req.body.message,
+      user: req.body.name,
+      added: new Date().toLocaleTimeString()
+    }
+    messages.push(newMessage)
   }
-  messages.push(newMessage)
   res.redirect('/')
 })
 
